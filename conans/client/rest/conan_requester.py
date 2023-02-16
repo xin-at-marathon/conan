@@ -118,7 +118,7 @@ class ConanRequester(object):
         try:
             t1 = time.time()
             all_kwargs = self._add_kwargs(url, kwargs)
-            tmp = getattr(requests, method)(url, **all_kwargs)
+            tmp = getattr(self._http_requester, method)(url, **all_kwargs)
             duration = time.time() - t1
             log_client_rest_api_call(url, method.upper(), duration, all_kwargs.get("headers"))
             return tmp
